@@ -2,9 +2,9 @@
 
 We all use python packages, such as Pandas, in our work at EBM DataLab. These packages are usually maintained by a small number of contributors online and occasionally they need to be updated. When this happens code that relies on the old version of the package can become non-functional and cause your jupyter notebook to throw an error. It is therefore a good idea to make note of the version of the package you are using, such as: 
 
-'pandas==0.24.1'
+```pandas==0.24.1' ```
 
-'numpy==1.16.3'
+```numpy==1.16.3```
 
 This allows you to specify that your code uses this particular version of a package. 
 
@@ -42,7 +42,7 @@ The folder you download will contain this structure:
 
     .
     ├── config                    
-    │   ├── docker-compose.yaml              
+    │   ├── docker-compose.yml              
     │   ├── Dockerfile
     │   └── requirements.txt
     ├── data
@@ -54,15 +54,6 @@ We need 3 files to work:
 2. requirements.txt - this contains all the packages and the versions that you want to use with this notebook
 3. docker-compose.yml - this tell Docker how to maintain the docker container for example how to save files 
 
+In order to run the docker container you can run the bash script called run.sh. 
 
-
-
-
-
-
-
-
-
-
-
-
+```bash sh run.sh ```
