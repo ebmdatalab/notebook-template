@@ -1,12 +1,10 @@
-# custom-docker
-Repository for development of using docker containers to manage virtual environments
-
-## Why is this important?
+## What is the issue?
 
 We all use python packages, such as Pandas, in our work at EBM DataLab. These packages are usually maintained by a small number of contributors online and occasionally they need to be updated. When this happens code that relies on the old version of the package can become non-functional and cause your jupyter notebook to throw an error. It is therefore a good idea to make note of the version of the package you are using, such as: 
 
-'pandas==0.24.1'
-'numpy==1.16.3'
+```pandas==0.24.1' ```
+
+```numpy==1.16.3```
 
 This allows you to specify that your code uses this particular version of a package. 
 
@@ -36,18 +34,26 @@ Docker is similar to something that has been used for a long time called Virtual
 
 ### Instructions
 
+You need to download Docker Desktop for your machine (windows/mac) and make a user account. Once you have this installed, you will need to log in. 
+
+You can then download either by the download button or by git clone this repo to get the files you need. 
+
+The folder you download will contain this structure:
+
+    .
+    ├── config                    
+    │   ├── docker-compose.yml              
+    │   ├── Dockerfile
+    │   └── requirements.txt
+    ├── data
+    ├── notebooks 
+    └── run.sh
+
 We need 3 files to work:
 1. Dockerfile - this contains the instructions that Docker uses to create a container. It needs a basic version of an image. 
 2. requirements.txt - this contains all the packages and the versions that you want to use with this notebook
 3. docker-compose.yml - this tell Docker how to maintain the docker container for example how to save files 
 
+In order to run the docker container you can run the bash script called run.sh. 
 
-
-
-
-
-
-
-
-
-
+```bash sh run.sh ```
