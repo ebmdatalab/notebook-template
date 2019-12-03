@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ebmdatalab/custom-docker/master)
+
 ## What is the issue?
 
 We all use python packages, such as Pandas, in our work at EBM DataLab. These packages are usually maintained by a small number of contributors online and occasionally they need to be updated. When this happens code that relies on the old version of the package can become non-functional and cause your jupyter notebook to throw an error. It is therefore a good idea to make note of the version of the package you are using, such as: 
