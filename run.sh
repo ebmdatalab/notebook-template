@@ -1,5 +1,4 @@
 #!/bin/bash
 
-docker build -t project1 -f config/Dockerfile .
-
-docker-compose up
+docker build -t custom-docker -f config/Dockerfile .
+docker run -ti -v ${PWD}:/usr/local/bin/custom-docker -p 8888:8888 custom-docker

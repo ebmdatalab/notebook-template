@@ -1,8 +1,9 @@
-version: '3'
+version: "3"
 services:
-  web:
-    build: .
-    ports:
-    - "8888:8888"
+  datascience-notebook:
+    image: jupyter/minimal-notebook:177037d09156
     volumes:
-    - .:/home/jovyan
+      - /Users/carolinemorton/Documents/ebmdatalab/custom-docker
+    ports:
+      - 8888:8888
+    container_name: custom-docker-container
