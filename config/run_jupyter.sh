@@ -9,14 +9,14 @@ cp -r ${CONFIG_PATH}/jupyter_notebook_config.py ~/.jupyter/
 cd ${MAIN_PATH}
 
 
-# edit the python3 kernel, that already imports os,sys and the paths to the app and test
+# edit the python3 kernel, to make it possible to import from libs/ from anywhere
 cat > /usr/local/share/jupyter/kernels/python3/kernel.json <<EOKERN
 {
     "display_name": "Python 3",
     "language": "python",
     "argv": [
         "python3",
-        "-c", "import sys, os; sys.path.insert(0, os.path.dirname(os.environ['LIBS_PATH'])); import libs.nbimport; from IPython.kernel.zmq.kernelapp import main; main()",
+        "-c", "import sys, os; sys.path.insert(0, os.path.dirname(os.environ['LIBS_PATH'])); from IPython.kernel.zmq.kernelapp import main; main()",
         "-f", "{connection_file}"
     ],
     "codemirror_mode": {

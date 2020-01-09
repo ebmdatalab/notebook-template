@@ -1,8 +1,15 @@
 FROM leandatascience/jupyterlab-ds:latest
 ENV MAIN_PATH=/usr/local/bin/custom-docker
+# The following environment variables are used by the run_jupyter.sh
+# script (q.v.)
+
+# This is put at the start of `sys.path`; `libs/` is supposed to
+# include any user-provided libraries, so they can be imported
 ENV LIBS_PATH=${MAIN_PATH}/libs
+
+# The location of jupyter_notebook_config.py, which is copied to
+# ~/.jupyter/
 ENV CONFIG_PATH=${MAIN_PATH}/config
-ENV NOTEBOOK_PATH=${MAIN_PATH}/notebooks
 
 COPY requirements.txt /tmp/
 RUN pip install --requirement /tmp/requirements.txt
