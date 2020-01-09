@@ -1,5 +1,6 @@
 FROM leandatascience/jupyterlab-ds:latest
-ENV MAIN_PATH=/usr/local/bin/custom-docker
+ENV MAIN_PATH=/root
+
 # The following environment variables are used by the run_jupyter.sh
 # script (q.v.)
 
