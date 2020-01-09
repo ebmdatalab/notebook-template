@@ -2,6 +2,7 @@
 
 cd ~
 mkdir .jupyter
+mkdir -p .local/share/jupyter/kernels/python3/
 
 # copy the jupyter configuration into home-directory
 cp -r ${CONFIG_PATH}/jupyter_notebook_config.py ~/.jupyter/
@@ -10,7 +11,9 @@ cd ${MAIN_PATH}
 
 
 # edit the python3 kernel, to make it possible to import from libs/ from anywhere
-cat > /usr/local/share/jupyter/kernels/python3/kernel.json <<EOKERN
+
+
+cat > ~/.local/share/jupyter/kernels/python3/kernel.json <<EOKERN
 {
     "display_name": "Python 3",
     "language": "python",

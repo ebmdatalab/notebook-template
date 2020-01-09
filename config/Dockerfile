@@ -1,5 +1,8 @@
 FROM leandatascience/jupyterlab-ds:latest
-ENV MAIN_PATH=/root
+
+RUN useradd -m app
+
+ENV MAIN_PATH=/home/app/notebook
 
 # The following environment variables are used by the run_jupyter.sh
 # script (q.v.)
@@ -18,3 +21,4 @@ RUN pip install --requirement /tmp/requirements.txt
 EXPOSE 8888
 
 CMD cd ${MAIN_PATH} && sh config/run_jupyter.sh
+USER app
