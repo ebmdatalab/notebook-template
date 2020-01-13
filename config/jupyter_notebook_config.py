@@ -98,7 +98,10 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.contents_manager_class = 'notebook.services.contents.largefilemanager.LargeFileManager'
 
 c.NotebookApp.contents_manager_class = "jupytext.TextFileContentsManager"
-c.ContentsManager.default_jupytext_formats = "ipynb,py"
+c.ContentsManager.preferred_jupytext_formats_save = "py:simple"
+c.ContentsManager.default_jupytext_formats = "ipynb,diffable_python//py"
+c.ContentsManager.default_notebook_metadata_filter = "all,-language_info"
+c.ContentsManager.default_cell_metadata_filter = "all"
 
 
 ## Extra keyword arguments to pass to set_secure_cookie. See tornado's
