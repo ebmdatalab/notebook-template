@@ -29,5 +29,6 @@ cat > ~/.local/share/jupyter/kernels/python3/kernel.json <<EOKERN
 }
 EOKERN
 
-mkdir notebooks
+mkdir -p notebooks
+
 jupyter lab
