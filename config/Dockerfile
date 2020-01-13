@@ -1,7 +1,6 @@
-FROM leandatascience/jupyterlab-ds:latest
+FROM sebbacon/datalab-jupyter:python3.8.1
 
-RUN useradd -m app
-
+# Set up jupyter environment
 ENV MAIN_PATH=/home/app/notebook
 
 # The following environment variables are used by the run_jupyter.sh
@@ -15,10 +14,11 @@ ENV LIBS_PATH=${MAIN_PATH}/libs
 # ~/.jupyter/
 ENV CONFIG_PATH=${MAIN_PATH}/config
 
+# Install pip requirements
 COPY requirements.txt /tmp/
+ENV PATH="/home/app/.local/bin:${PATH}"
 RUN pip install --requirement /tmp/requirements.txt
 
 EXPOSE 8888
 
 CMD cd ${MAIN_PATH} && sh config/run_jupyter.sh
-USER app
