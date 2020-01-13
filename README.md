@@ -1,3 +1,17 @@
+## Running without docker
+
+First, set up a virtual environment for the python version in question (see Dockerfile).  Then install dependencies that are normally automatically included by Docker:
+
+    pip install jupyter jupytext
+
+Then install this notebook's dependencies:
+
+    pip install -r requirements.txt
+
+Now run jupyter in the same way it's started in the Docker image:
+
+    PYTHONPATH=$(pwd) jupyter notebook --config=config/jupyter_notebook_config.py
+
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ebmdatalab/custom-docker/master)
 
 ## What is the issue?
