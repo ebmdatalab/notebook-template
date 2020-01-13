@@ -98,6 +98,8 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.contents_manager_class = 'notebook.services.contents.largefilemanager.LargeFileManager'
 
 c.NotebookApp.contents_manager_class = "jupytext.TextFileContentsManager"
+c.ContentsManager.default_jupytext_formats = "ipynb,py"
+
 
 ## Extra keyword arguments to pass to set_secure_cookie. See tornado's
 #  set_secure_cookie docs for details.
