@@ -26,6 +26,11 @@ Follow installation instructions
 may find it useful to fiirst refer to our own installation notes
 [here](https://github.com/ebmdatalab/custom-docker/issues/4).
 
+Windows users who log into an Active Directory domain (i.e. a network
+login) may find they lack permissions to start Docker correctly. If
+so, follow [these
+instructions](https://github.com/docker/for-win/issues/785#issuecomment-344805180).
+
 ## Start notebook
 
 On Linux or OS X:
