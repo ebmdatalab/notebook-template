@@ -1,5 +1,14 @@
+# Todo
+
+* Think about pip dependencies and the base image
+
+
 This is a skeleton project for creating a reproducible, cross-platform
-analysis notebook, using Docker.
+analysis notebook, using Docker.  It also includes:
+
+* configuration for `jupytext`, to support easier code review
+* cross-platform startup scripts
+* best practice folder structure and documentation
 
 To use it:
 
@@ -9,17 +18,18 @@ To use it:
 * init this as a new git repo
 * replace this front matter with information about your project;
    * you should probably keep the rest of the contents to help other users of this package
-   * but edit the URL of the "quick start" button below to match the location of your new repo
-* push it to Github,
+   * but edit the URL of the "quick start" button and "nbviewer" link
+     below to match the location of your new repo
+* push it to Github
 * start coding
 
 
-# Viewing and interacting with notebooks
+# View and interact with notebooks
 
 Notebooks live in the `notebooks/` folder (with an `ipynb`
-extension). Github should render these so you can read them, but can
-be flakey; an alternative is to post the URL for a notebook into
-https://nbviewer.jupyter.org/.
+extension). You can most easily view them [on
+nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
+though looking at them in Github should also work.
 
 You can view *and interact* with any notebooks in the `notebooks/`
 folder by launching the notebook in the free online service,
@@ -28,6 +38,9 @@ folder by launching the notebook in the free online service,
 Any changes you make there won't be saved; to do development work,
 you'll need to set up a local jupyter server and git repository.
 
+# How to cite
+
+XXX
 
 # Folder layout
 
@@ -65,7 +78,8 @@ instructions](https://github.com/docker/for-win/issues/785#issuecomment-34480518
 
 ### Start notebook
 
-On Linux or OS X:
+The first time you do this, it may take some time, as the (large) base
+Docker image must be downloaded. On Linux or OS X:
 
     ./run.sh
 
@@ -90,7 +104,7 @@ Docker:
 
 ...and install this notebook's dependencies:
 
-    pip-sync
+    pip install -r requirements.txt
 
 Finally, run jupyter in the same way it's started in the Docker image:
 
@@ -110,7 +124,7 @@ The workflow is:
 
 * When you want to install a new package, add it to `requirements.in`
 * Run `pip-compile` to generate a `requirements.txt` based on that file
-* Run `pip-sync` to bring your environment in sync with this `requirements.txt`
+* Run `pip install -r requirements.txt`
 * Commit both `requirements.in` and `requirements.txt` to your git repo
 
 To *upgrade* a specific package:
@@ -121,15 +135,15 @@ To upgrade everything:
 
     pip-compile --upgrade
 
-Don't forget to run `pip-sync` after running any upgrade command.
+Don't forget to run `pip install -r requirements.txt` after running any upgrade command.
 
 To execute these within your dockerised environment, start a new Bash
 console in Jupyter Lab (from the same menu you would create a new
 notebook).
 
-You can then run whatever shell commands you like, by prepending a
-`!`, and then hitting Shift + Enter to execute (for example,
-`!pip-compile`)
+You can then run whatever shell commands you like, by typing them and
+hitting Shift + Enter to execute.
+
 
 ## Jupytext and diffing
 
@@ -139,3 +153,14 @@ in a subfolder at `notebooks/diffable_python`. This skeleton is also
 set up with a `.gitattributes` file which means `ipynb` files are
 ignored in Github Pull Requests, making it easier to do code reviews
 against changes.
+
+# Developing this skeleton
+
+The base Docker image used by this Dockerfile can be found
+[here](https://github.com/ebmdatalab/datalab-jupyter). If you need to
+provide a new version of Python, or upgrade the base packages, that's
+the place to do it.
+
+You could also upgrade Python packages in the Dockerfile in this repo,
+but users will benefit from faster startup times if you pre-install
+them in a base image.
