@@ -1,61 +1,166 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ebmdatalab/custom-docker/master)
+# Todo
 
-## What is the issue?
+* Think about pip dependencies and the base image
 
-We all use python packages, such as Pandas, in our work at EBM DataLab. These packages are usually maintained by a small number of contributors online and occasionally they need to be updated. When this happens code that relies on the old version of the package can become non-functional and cause your jupyter notebook to throw an error. It is therefore a good idea to make note of the version of the package you are using, such as: 
 
-```pandas==0.24.1' ```
+This is a skeleton project for creating a reproducible, cross-platform
+analysis notebook, using Docker.  It also includes:
 
-```numpy==1.16.3```
+* configuration for `jupytext`, to support easier code review
+* cross-platform startup scripts
+* best practice folder structure and documentation
 
-This allows you to specify that your code uses this particular version of a package. 
+To use it:
 
-## Doesn't this mean that you can have more than one version installed?
+* clone this repo
+* copy the files to a new folder
+* delete the `.git` subfolder
+* init this as a new git repo
+* replace this front matter with information about your project;
+   * you should probably keep the rest of the contents to help other users of this package
+   * but edit the URL of the "quick start" button and "nbviewer" link
+     below to match the location of your new repo
+* push it to Github
+* start coding
 
-Usually no. You can have different version of some things installed (such as python 2 and python 3) but for the most part, installing a more up to date package will *update* an older version. 
 
-## What's the solution?
+# View and interact with notebooks
 
-This is a very common problem in coding and to get around this, something called virtual environments have been developed. 
+Notebooks live in the `notebooks/` folder (with an `ipynb`
+extension). You can most easily view them [on
+nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
+though looking at them in Github should also work.
 
-Virtual enviroments are a named space in which you can install the languages and packages you require in isolation. You can create a virtual environment from the command line using venv (more here: href="https://realpython.com/python-virtual-environments-a-primer/"). Most people keep note of the packages they need by keeping a requirement.txt file which they use to populate their virtual environment with the correct packages. 
+You can view *and interact* with any notebooks in the `notebooks/`
+folder by launching the notebook in the free online service,
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ebmdatalab/custom-docker/master).
 
-Unfortunately for us, simple virtual enviroments do not always work correctly when using Anaconda and Jupyter notebooks. This is because it is too easy to start Juptyer first and once yhe kernel is running, virtual environments are not easy to use. 
+Any changes you make there won't be saved; to do development work,
+you'll need to set up a local jupyter server and git repository.
 
-We have developed a solution using Docker. 
+# How to cite
 
-## What is Docker?
+XXX
 
-Docker is a tool that is designed to make it easier to create, deploy and run applications using something called Containers. Containers are an isolated space in which packages, code and anything else you might need are wrapped up and shipped as one block. This container can then be shared and will work on any other Linux machine regardless of any customised settings on any particularly machine. 
+# Folder layout
 
-Docker is similar to something that has been used for a long time called Virtual Machines. The advantage over a Virtual Machine is that instead of creating a whole virtual operating system, it allows whatever to be shipped to use the Linux on the machne to run which gives better performance. 
+By convention, all Jupyter notebooks live in `notebooks/`.  When
+notebooks look like they will contain more than a few lines of Python,
+the Python is separated into a separate module, in `lib/`, and
+imported from the notebook.
 
-## Why do we like Docker?
+`config/` contains the configuration required to run the Notebook; you
+shouldn't have to touch this.
 
-* Open Source
 
-### Instructions
+# Developing notebooks
 
-You need to download Docker Desktop for your machine (windows/mac) and make a user account. Once you have this installed, you will need to log in. 
+There are two ways of getting started with a development environment:
+with Docker, or using Python virtual environments.
 
-You can then download either by the download button or by git clone this repo to get the files you need. 
+Docker allows you to run identical software on all platforms. In
+Windows, in particular, there are challenges ensuring all python
+packages are exactly the same as those available on other platforms.
 
-The folder you download will contain this structure:
+## Docker enviroment
 
-    .
-    ├── config                    
-    │   ├── docker-compose.yml              
-    │   ├── Dockerfile
-    │   └── requirements.txt
-    ├── data
-    ├── notebooks 
-    └── run.sh
+### Installation
 
-We need 3 files to work:
-1. Dockerfile - this contains the instructions that Docker uses to create a container. It needs a basic version of an image. 
-2. requirements.txt - this contains all the packages and the versions that you want to use with this notebook
-3. docker-compose.yml - this tell Docker how to maintain the docker container for example how to save files 
+Follow installation instructions
+[here](https://docs.docker.com/install/). If running on Windows, you
+may find it useful first to refer to our own installation notes
+[here](https://github.com/ebmdatalab/custom-docker/issues/4).
 
-In order to run the docker container you can run the bash script called run.sh. 
+Windows users who log into an Active Directory domain (i.e. a network
+login) may find they lack permissions to start Docker correctly. If
+so, follow [these
+instructions](https://github.com/docker/for-win/issues/785#issuecomment-344805180).
 
-```bash sh run.sh ```
+### Start notebook
+
+The first time you do this, it may take some time, as the (large) base
+Docker image must be downloaded. On Linux or OS X:
+
+    ./run.sh
+
+On Windows, double-click `run.bat`.
+
+This will start a Jupyter Lab server in a Docker container. You will
+be able to access this in your web browser at http://localhost:8888/.
+Changes made in the Docker container will appear in your own
+filesystem, and can be committed as usual.
+
+## Running without Docker
+
+If you want to execute notebooks without Docker, set up a [virtual
+environment](https://docs.python.org/3/tutorial/venv.html) for the
+Python version in question (you can infer this from the first line of
+the `Dockerfile` in the root of this repo).
+
+Next, install dependencies that are normally automatically included by
+Docker:
+
+    pip install jupyter jupytext pip-tools
+
+...and install this notebook's dependencies:
+
+    pip install -r requirements.txt
+
+Finally, run jupyter in the same way it's started in the Docker image:
+
+    PYTHONPATH=$(pwd) jupyter notebook --config=config/jupyter_notebook_config.py
+
+
+# Development best practices
+
+## Installing new packages
+
+Best practice is to ensure all your python dependencies are pinned to
+specific versions. To ensure this, while still supporting upgrading
+individual packages in a sane way, we use
+[pip-tools](https://github.com/jazzband/pip-tools).
+
+The workflow is:
+
+* When you want to install a new package, add it to `requirements.in`
+* Run `pip-compile` to generate a `requirements.txt` based on that file
+* Run `pip install -r requirements.txt`
+* Commit both `requirements.in` and `requirements.txt` to your git repo
+
+To *upgrade* a specific package:
+
+    pip-compile --upgrade-package <packagename>
+
+To upgrade everything:
+
+    pip-compile --upgrade
+
+Don't forget to run `pip install -r requirements.txt` after running any upgrade command.
+
+To execute these within your dockerised environment, start a new Bash
+console in Jupyter Lab (from the same menu you would create a new
+notebook).
+
+You can then run whatever shell commands you like, by typing them and
+hitting Shift + Enter to execute.
+
+
+## Jupytext and diffing
+
+The Jupyter Lab server is packaged with Jupytext, which automatically
+synchronises edits you make in a notebook with a pure-python version
+in a subfolder at `notebooks/diffable_python`. This skeleton is also
+set up with a `.gitattributes` file which means `ipynb` files are
+ignored in Github Pull Requests, making it easier to do code reviews
+against changes.
+
+# Developing this skeleton
+
+The base Docker image used by this Dockerfile can be found
+[here](https://github.com/ebmdatalab/datalab-jupyter). If you need to
+provide a new version of Python, or upgrade the base packages, that's
+the place to do it.
+
+You could also upgrade Python packages in the Dockerfile in this repo,
+but users will benefit from faster startup times if you pre-install
+them in a base image.
