@@ -28,26 +28,6 @@ This repo is the template to use with future projects that utilise Docker. Follo
 5. Delete the custom-docker repo in the Github app
 6. Navigate back to your project repo and commit to master
 
-## Complete the readme
-This should contain all the information about your project
-
-### Add a Binder button
-Binder allows you to view *and interact* with any notebooks within the `notebooks/` folder. This will only work on public repos. 
-
-Any changes you make there won't be saved; to do development work, you'll need to set up a local jupyter server and git repository.
-
-Use the browser to go to [Binder](https://mybinder.org). Copy and paste in the github address of your notebook and copy the output link. This should be added to your readme. 
-
-### nbviewer 
-Notebooks live in the `notebooks/` folder (with an `ipynb` extension). You can most easily view them [on
-nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
-though looking at them in Github should also work.
-
-### Instruction on how to cite 
-Once a project is completed, please use the instructions [here](https://guides.github.com/activities/citable-code/) to deposit a copy of your code with Zenodo. You will need a Zenodo free account to do this. This creates a DOI. Once you have this please add this in the readme. 
-
-If there is a paper associated with this code, please change the 'how to cite' section to the citation and DOI for the paper. This allows us to build up citation credit. 
-
 # Folder layout
 
 By convention, all Jupyter notebooks live in `notebooks/`.  When
@@ -112,9 +92,7 @@ Finally, run jupyter in the same way it's started in the Docker image:
 
     PYTHONPATH=$(pwd) jupyter notebook --config=config/jupyter_notebook_config.py
 
-
 # Development best practices
-
 ## Installing new packages
 
 Best practice is to ensure all your python dependencies are pinned to
@@ -145,6 +123,26 @@ notebook).
 
 You can then run whatever shell commands you like, by typing them and
 hitting Shift + Enter to execute.
+
+## Complete the readme
+This should contain all the information about your project
+
+### Add a Binder button
+Binder allows you to view *and interact* with any notebooks within the `notebooks/` folder. This will only work on public repos. 
+
+Any changes you make there won't be saved; to do development work, you'll need to set up a local jupyter server and git repository.
+
+Use the browser to go to [Binder](https://mybinder.org). Copy and paste in the github address of your notebook and copy the output link. This should be added to your readme. 
+
+### nbviewer 
+Notebooks live in the `notebooks/` folder (with an `ipynb` extension). You can most easily view them [on
+nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
+though looking at them in Github should also work.
+
+### Instruction on how to cite 
+Once a project is completed, please use the instructions [here](https://guides.github.com/activities/citable-code/) to deposit a copy of your code with Zenodo. You will need a Zenodo free account to do this. This creates a DOI. Once you have this please add this in the readme. 
+
+If there is a paper associated with this code, please change the 'how to cite' section to the citation and DOI for the paper. This allows us to build up citation credit. 
 
 ## Jupytext and diffing
 
