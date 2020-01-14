@@ -58,7 +58,9 @@ may find it useful first to refer to our own installation notes
 Windows users who log into an Active Directory domain (i.e. a network
 login) may find they lack permissions to start Docker correctly. If
 so, follow [these
-instructions](https://github.com/docker/for-win/issues/785#issuecomment-344805180).### Start notebook
+instructions](https://github.com/docker/for-win/issues/785#issuecomment-344805180).
+
+### Start notebook
 
 The first time you do this, it may take some time, as the (large) base
 Docker image must be downloaded. On Linux or OS X:
