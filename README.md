@@ -1,8 +1,3 @@
-# Todo
-
-* Think about pip dependencies and the base image
-
-
 This is a skeleton project for creating a reproducible, cross-platform
 analysis notebook, using Docker.  It also includes:
 
@@ -10,37 +5,48 @@ analysis notebook, using Docker.  It also includes:
 * cross-platform startup scripts
 * best practice folder structure and documentation
 
-To use it:
+# How to get started
 
-* clone this repo
-* copy the files to a new folder
-* delete the `.git` subfolder
-* init this as a new git repo
-* replace this front matter with information about your project;
-   * you should probably keep the rest of the contents to help other users of this package
-   * but edit the URL of the "quick start" button and "nbviewer" link
-     below to match the location of your new repo
-* push it to Github
-* start coding
+This repo is the template to use with future projects that utilise Docker. Follow these steps to create a new repo for your project with the template provided here. 
 
+## Set Up
+### With Command Line 
 
-# View and interact with notebooks
+1. On the command line, navigate to where you keep your work 
+2. Clone this repo using the command: ```git clone https://github.com/ebmdatalab/custom-docker.git```
+3. Create your new repo on the EBM Datalab github. It is a good idea to include a .gitignore and license at this stage. 
+4. Clone this repo onto your machine using git clone. 
+5. Copy the files from the custom-docker git folder (made in step 2) across into your new project git repo
+6. Delete the custom-docker repo
+7. Add all your files to git using ```git add . ``` and ```git commit -m "first commit"```
 
-Notebooks live in the `notebooks/` folder (with an `ipynb`
-extension). You can most easily view them [on
+### With Github Desktop 
+1. Clone the custom-docker repo 
+2. Create a new repo for your project. Use git ignore and license. 
+3. Navigate back to custom-docker repo on the Github app and press View the files of your repo. 
+4. Copy the files from the custom-docker git folder (made in step 2) across into your new project
+5. Delete the custom-docker repo in the Github app
+6. Navigate back to your project repo and commit to master
+
+## Complete the readme
+This should contain all the information about your project
+
+### Add a Binder button
+Binder allows you to view *and interact* with any notebooks within the `notebooks/` folder. This will only work on public repos. 
+
+Any changes you make there won't be saved; to do development work, you'll need to set up a local jupyter server and git repository.
+
+Use the browser to go to [Binder](https://mybinder.org). Copy and paste in the github address of your notebook and copy the output link. This should be added to your readme. 
+
+### nbviewer 
+Notebooks live in the `notebooks/` folder (with an `ipynb` extension). You can most easily view them [on
 nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
 though looking at them in Github should also work.
 
-You can view *and interact* with any notebooks in the `notebooks/`
-folder by launching the notebook in the free online service,
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ebmdatalab/custom-docker/master).
+### Instruction on how to cite 
+Once a project is completed, please use the instructions [here](https://guides.github.com/activities/citable-code/) to deposit a copy of your code with Zenodo. You will need a Zenodo free account to do this. This creates a DOI. Once you have this please add this in the readme. 
 
-Any changes you make there won't be saved; to do development work,
-you'll need to set up a local jupyter server and git repository.
-
-# How to cite
-
-XXX
+If there is a paper associated with this code, please change the 'how to cite' section to the citation and DOI for the paper. This allows us to build up citation credit. 
 
 # Folder layout
 
@@ -52,7 +58,6 @@ imported from the notebook.
 `config/` contains the configuration required to run the Notebook; you
 shouldn't have to touch this.
 
-
 # Developing notebooks
 
 There are two ways of getting started with a development environment:
@@ -63,7 +68,6 @@ Windows, in particular, there are challenges ensuring all python
 packages are exactly the same as those available on other platforms.
 
 ## Docker enviroment
-
 ### Installation
 
 Follow installation instructions
@@ -74,9 +78,7 @@ may find it useful first to refer to our own installation notes
 Windows users who log into an Active Directory domain (i.e. a network
 login) may find they lack permissions to start Docker correctly. If
 so, follow [these
-instructions](https://github.com/docker/for-win/issues/785#issuecomment-344805180).
-
-### Start notebook
+instructions](https://github.com/docker/for-win/issues/785#issuecomment-344805180).### Start notebook
 
 The first time you do this, it may take some time, as the (large) base
 Docker image must be downloaded. On Linux or OS X:
@@ -144,7 +146,6 @@ notebook).
 You can then run whatever shell commands you like, by typing them and
 hitting Shift + Enter to execute.
 
-
 ## Jupytext and diffing
 
 The Jupyter Lab server is packaged with Jupytext, which automatically
@@ -164,3 +165,6 @@ the place to do it.
 You could also upgrade Python packages in the Dockerfile in this repo,
 but users will benefit from faster startup times if you pre-install
 them in a base image.
+
+To Do 
+* Think about pip dependencies and the base image
