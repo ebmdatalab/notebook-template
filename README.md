@@ -124,7 +124,7 @@ notebook).
 You can then run whatever shell commands you like, by typing them and
 hitting Shift + Enter to execute.
 
-## Complete the readme
+# Complete the readme
 This should contain all the information about your project
 
 ### Add a Binder button
