@@ -14,6 +14,21 @@ To use it:
 * start coding
 
 
+# Viewing and interacting with notebooks
+
+Notebooks live in the `notebooks/` folder (with an `ipynb`
+extension). Github should render these so you can read them, but can
+be flakey; an alternative is to post the URL for a notebook into
+https://nbviewer.jupyter.org/.
+
+You can view *and interact* with any notebooks in the `notebooks/`
+folder by launching the notebook in the free online service,
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ebmdatalab/custom-docker/master).
+
+Any changes you make there won't be saved; to do development work,
+you'll need to set up a local jupyter server and git repository.
+
+
 # Folder layout
 
 By convention, all Jupyter notebooks live in `notebooks/`.  When
@@ -24,14 +39,6 @@ imported from the notebook.
 `config/` contains the configuration required to run the Notebook; you
 shouldn't have to touch this.
 
-# Viewing and interacting with notebooks
-
-You can view and interact with any notebooks in the `notebooks/`
-folder by launching the notebook in the free online service,
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ebmdatalab/custom-docker/master).
-
-Any changes you make there won't be saved; to do development work,
-you'll need to set up a local jupyter server and git repository.
 
 # Developing notebooks
 
