@@ -1,0 +1,7 @@
+# action.yml
+name: 'Test notebooks'
+description: 'Test notebooks can be reproduced'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: ['py.test', '--nbval', 'notebooks']
