@@ -1,6 +1,6 @@
 # EBM DataLab's default notebook environment
 
-[!status](https://github.com/ebmdatalab/custom-docker/workflows/Jupyter%20notebooks/badge.svg)
+![status](https://github.com/ebmdatalab/custom-docker/workflows/Notebook%20checks/badge.svg)
 
 This is a skeleton project for creating a reproducible, cross-platform
 analysis notebook, using Docker.  It also includes:

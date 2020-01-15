@@ -1,4 +1,4 @@
-name: Jupyter notebooks
+name: Notebook checks
 
 on: [push]
 
