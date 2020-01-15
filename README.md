@@ -7,19 +7,20 @@ analysis notebook, using Docker.  It also includes:
 * cross-platform startup scripts
 * best practice folder structure and documentation
 
-To use it:
+To get started, [create a new
+repository](https://github.com/organizations/ebmdatalab/repositories/new)
+using this repo as a template, and clone it to your local machine.
 
-* clone this repo
-* copy the files to a new folder
-* delete the `.git` subfolder
-* init this as a new git repo
+Your new repo's name should end with `-notebook`, to make it clear what it
+is.
+
+Then:
+
 * replace this front matter with information about your project;
    * you should probably keep the rest of the contents to help other users of this package
    * but edit the URL of the "quick start" button and "nbviewer" link
      below to match the location of your new repo
-* push it to Github
-* start coding
-
+* refer to the "Developing notebooks" section if this is your first time
 
 # Quick Start
 
@@ -38,17 +39,6 @@ you'll need to set up a local jupyter server and git repository.
 # How to cite
 
 XXX
-
-# Folder layout
-
-By convention, all Jupyter notebooks live in `notebooks/`.  When
-notebooks look like they will contain more than a few lines of Python,
-the Python is separated into a separate module, in `lib/`, and
-imported from the notebook.
-
-`config/` contains the configuration required to run the Notebook; you
-shouldn't have to touch this.
-
 
 # Developing notebooks
 
@@ -107,6 +97,15 @@ Finally, run jupyter in the same way it's started in the Docker image:
 
     PYTHONPATH=$(pwd) jupyter notebook --config=config/jupyter_notebook_config.py
 
+## Folder layout
+
+By convention, all Jupyter notebooks live in `notebooks/`.  When
+notebooks look like they will contain more than a few lines of Python,
+the Python is separated into a separate module, in `lib/`, and
+imported from the notebook.
+
+`config/` contains the configuration required to run the Notebook; you
+shouldn't have to touch this.
 
 # Development best practices
 
