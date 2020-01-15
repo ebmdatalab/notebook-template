@@ -20,8 +20,10 @@ Then:
 
 * replace this front matter with information about your project;
    * you should probably keep the rest of the contents to help other users of this package
-   * but edit the URL of the "quick start" button and "nbviewer" link
-     below to match the location of your new repo
+   * you should also keep the status badge at the top, changing
+     `custom-docker` to the name of your repo
+   * also edit the URL of the "quick start" button and the "nbviewer"
+     link below to match the name of your new repo
 * refer to the "Developing notebooks" section if this is your first time
 
 # Quick Start
@@ -108,6 +110,16 @@ imported from the notebook.
 
 `config/` contains the configuration required to run the Notebook; you
 shouldn't have to touch this.
+
+## Testing
+
+At a minimum, we expect all notebooks must be runnable from start to
+finish, and that the output of code cells matches that saved in the
+notebook.  We assert this using the
+[nbval](https://github.com/computationalmodelling/nbval) pytest
+plugin, which we have set up as a Github Actions workflow (see the
+`.github/` folder). Any other pytest-style tests found are also run as
+part of this workflow.
 
 # Development best practices
 
