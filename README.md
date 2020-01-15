@@ -1,3 +1,5 @@
+# EBM DataLab's default notebook environment
+
 This is a skeleton project for creating a reproducible, cross-platform
 analysis notebook, using Docker.  It also includes:
 
@@ -5,38 +7,38 @@ analysis notebook, using Docker.  It also includes:
 * cross-platform startup scripts
 * best practice folder structure and documentation
 
-# How to get started
+To get started, [create a new
+repository](https://github.com/organizations/ebmdatalab/repositories/new)
+using this repo as a template, and clone it to your local machine.
 
-This repo is the template to use with future projects that utilise Docker. Follow these steps to create a new repo for your project with the template provided here. 
+Your new repo's name should end with `-notebook`, to make it clear what it
+is.
 
-## Set Up
-### With Command Line 
+Then:
 
-1. On the command line, navigate to where you keep your work 
-2. Clone this repo using the command: ```git clone https://github.com/ebmdatalab/custom-docker.git```
-3. Create your new repo on the EBM Datalab github. It is a good idea to include a .gitignore and license at this stage. 
-4. Clone this repo onto your machine using git clone. 
-5. Copy the files from the custom-docker git folder (made in step 2) across into your new project git repo
-6. Delete the custom-docker repo
-7. Add all your files to git using ```git add . ``` and ```git commit -m "first commit"```
+* replace this front matter with information about your project;
+   * you should probably keep the rest of the contents to help other users of this package
+   * but edit the URL of the "quick start" button and "nbviewer" link
+     below to match the location of your new repo
+* refer to the "Developing notebooks" section if this is your first time
 
-### With Github Desktop 
-1. Clone the custom-docker repo 
-2. Create a new repo for your project. Use git ignore and license. 
-3. Navigate back to custom-docker repo on the Github app and press View the files of your repo. 
-4. Copy the files from the custom-docker git folder (made in step 2) across into your new project
-5. Delete the custom-docker repo in the Github app
-6. Navigate back to your project repo and commit to master
+# Quick Start
 
-# Folder layout
+Notebooks live in the `notebooks/` folder (with an `ipynb`
+extension). You can most easily view them [on
+nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
+though looking at them in Github should also work.
 
-By convention, all Jupyter notebooks live in `notebooks/`.  When
-notebooks look like they will contain more than a few lines of Python,
-the Python is separated into a separate module, in `lib/`, and
-imported from the notebook.
+You can view *and interact* with any notebooks in the `notebooks/`
+folder by launching the notebook in the free online service,
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ebmdatalab/custom-docker/master).
 
-`config/` contains the configuration required to run the Notebook; you
-shouldn't have to touch this.
+Any changes you make there won't be saved; to do development work,
+you'll need to set up a local jupyter server and git repository.
+
+# How to cite
+
+XXX
 
 # Developing notebooks
 
@@ -48,6 +50,7 @@ Windows, in particular, there are challenges ensuring all python
 packages are exactly the same as those available on other platforms.
 
 ## Docker enviroment
+
 ### Installation
 
 Follow installation instructions
@@ -94,7 +97,42 @@ Finally, run jupyter in the same way it's started in the Docker image:
 
     PYTHONPATH=$(pwd) jupyter notebook --config=config/jupyter_notebook_config.py
 
+## Folder layout
+
+By convention, all Jupyter notebooks live in `notebooks/`.  When
+notebooks look like they will contain more than a few lines of Python,
+the Python is separated into a separate module, in `lib/`, and
+imported from the notebook.
+
+`config/` contains the configuration required to run the Notebook; you
+shouldn't have to touch this.
+
 # Development best practices
+
+## Using a specific base image
+
+The `Dockerfile` is a way of telling Docker what environment to start
+for you. The first line should be something like:
+
+    FROM ebmdatalab/datalab-jupyter:python3.8.1-d92ad681ed6b16c3c3e0dc5cc21517614bb45d5b
+
+The part before the colon tells docker which "base image" to use (if
+you need to see it, the code for our base Docker image can be found
+[here](https://github.com/ebmdatalab/datalab-jupyter)).
+
+The part after the colon is a docker `tag`, and specifies which
+version of that image to use.
+
+Our tags are of the form `python<version>-<git-commit>`. The
+`<version>` is self-explanatory, and the thing you'll usually care
+about; `<git-commit>` is the specific commit used to build it. To
+ensure your environment is exactly reproducible, you should always use a specific commit.
+
+You can see all the available tags [here](
+https://hub.docker.com/repository/docker/ebmdatalab/datalab-jupyter/tags?page=1).
+
+
+
 ## Installing new packages
 
 Best practice is to ensure all your python dependencies are pinned to
@@ -106,7 +144,7 @@ The workflow is:
 
 * When you want to install a new package, add it to `requirements.in`
 * Run `pip-compile` to generate a `requirements.txt` based on that file
-* Run `pip install -r requirements.txt`
+* Run `pip-sync` to ensure your installed packages exactly match those in `requirements.txt`
 * Commit both `requirements.in` and `requirements.txt` to your git repo
 
 To *upgrade* a specific package:
@@ -117,7 +155,8 @@ To upgrade everything:
 
     pip-compile --upgrade
 
-Don't forget to run `pip install -r requirements.txt` after running any upgrade command.
+Don't forget to run `pip-sync` after running
+any upgrade command.
 
 To execute these within your dockerised environment, start a new Bash
 console in Jupyter Lab (from the same menu you would create a new
@@ -126,25 +165,6 @@ notebook).
 You can then run whatever shell commands you like, by typing them and
 hitting Shift + Enter to execute.
 
-# Complete the readme
-This should contain all the information about your project
-
-### Add a Binder button
-Binder allows you to view *and interact* with any notebooks within the `notebooks/` folder. This will only work on public repos. 
-
-Any changes you make there won't be saved; to do development work, you'll need to set up a local jupyter server and git repository.
-
-Use the browser to go to [Binder](https://mybinder.org). Copy and paste in the github address of your notebook and copy the output link. This should be added to your readme. 
-
-### nbviewer 
-Notebooks live in the `notebooks/` folder (with an `ipynb` extension). You can most easily view them [on
-nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
-though looking at them in Github should also work.
-
-### Instruction on how to cite 
-Once a project is completed, please use the instructions [here](https://guides.github.com/activities/citable-code/) to deposit a copy of your code with Zenodo. You will need a Zenodo free account to do this. This creates a DOI. Once you have this please add this in the readme. 
-
-If there is a paper associated with this code, please change the 'how to cite' section to the citation and DOI for the paper. This allows us to build up citation credit. 
 
 ## Jupytext and diffing
 
@@ -154,17 +174,3 @@ in a subfolder at `notebooks/diffable_python`. This skeleton is also
 set up with a `.gitattributes` file which means `ipynb` files are
 ignored in Github Pull Requests, making it easier to do code reviews
 against changes.
-
-# Developing this skeleton
-
-The base Docker image used by this Dockerfile can be found
-[here](https://github.com/ebmdatalab/datalab-jupyter). If you need to
-provide a new version of Python, or upgrade the base packages, that's
-the place to do it.
-
-You could also upgrade Python packages in the Dockerfile in this repo,
-but users will benefit from faster startup times if you pre-install
-them in a base image.
-
-To Do 
-* Think about pip dependencies and the base image

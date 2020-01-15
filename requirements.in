@@ -1,0 +1,15 @@
+# Basic requirements for notebook infrastructure provided in base
+# docker image
+pip-tools
+jupyter
+jupyterlab
+jupytext
+bash_kernel
+
+# Commonly-used packages provided in base docker image
+pandas-gbq
+pandas
+numpy
+ebmdatalab
+
+# Add extra per-notebook packages here
