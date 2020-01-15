@@ -1,0 +1,14 @@
+name: Jupyter notebooks
+
+on: [push]
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: Test notebooks are runnable and up-to-date
+    steps:
+    - name: Test
+      id: test
+      uses: docker://ebmdatalab/datalab-jupyter
+      with:
+        entrypoint: 'py.test --nbval notebooks'
