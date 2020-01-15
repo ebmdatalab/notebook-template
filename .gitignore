@@ -107,3 +107,6 @@ venv.bak/
 .ipython/
 .jupyter/
 .local/
+
+# Emacs
+*~
