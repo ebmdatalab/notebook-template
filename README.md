@@ -109,6 +109,30 @@ shouldn't have to touch this.
 
 # Development best practices
 
+## Using a specific base image
+
+The `Dockerfile` is a way of telling Docker what environment to start
+for you. The first line should be something like:
+
+    FROM ebmdatalab/datalab-jupyter:python3.8.1-d92ad681ed6b16c3c3e0dc5cc21517614bb45d5b
+
+The part before the colon tells docker which "base image" to use (if
+you need to see it, the code for our base Docker image can be found
+[here](https://github.com/ebmdatalab/datalab-jupyter)).
+
+The part after the colon is a docker `tag`, and specifies which
+version of that image to use.
+
+Our tags are of the form `python<version>-<git-commit>`. The
+`<version>` is self-explanatory, and the thing you'll usually care
+about; `<git-commit>` is the specific commit used to build it. To
+ensure your environment is exactly reproducible, you should always use a specific commit.
+
+You can see all the available tags [here](
+https://hub.docker.com/repository/docker/ebmdatalab/datalab-jupyter/tags?page=1).
+
+
+
 ## Installing new packages
 
 Best practice is to ensure all your python dependencies are pinned to
@@ -150,14 +174,3 @@ in a subfolder at `notebooks/diffable_python`. This skeleton is also
 set up with a `.gitattributes` file which means `ipynb` files are
 ignored in Github Pull Requests, making it easier to do code reviews
 against changes.
-
-# Developing this skeleton
-
-The base Docker image used by this Dockerfile can be found
-[here](https://github.com/ebmdatalab/datalab-jupyter). If you need to
-provide a new version of Python, or upgrade the base packages, that's
-the place to do it.
-
-You could also upgrade Python packages in the Dockerfile in this repo,
-but users will benefit from faster startup times if you pre-install
-them in a base image.
