@@ -9,6 +9,6 @@ jobs:
     steps:
     - name: Test
       id: test
-      uses: docker://ebmdatalab/datalab-jupyter
+      uses: docker://ebmdatalab/datalab-jupyter:python3.8.1
       with:
         entrypoint: 'py.test --nbval notebooks'
