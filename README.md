@@ -1,7 +1,4 @@
-# Todo
-
-* Think about pip dependencies and the base image
-
+# EBM DataLab's default notebook environment
 
 This is a skeleton project for creating a reproducible, cross-platform
 analysis notebook, using Docker.  It also includes:
@@ -24,7 +21,7 @@ To use it:
 * start coding
 
 
-# View and interact with notebooks
+# Quick Start
 
 Notebooks live in the `notebooks/` folder (with an `ipynb`
 extension). You can most easily view them [on
@@ -124,7 +121,7 @@ The workflow is:
 
 * When you want to install a new package, add it to `requirements.in`
 * Run `pip-compile` to generate a `requirements.txt` based on that file
-* Run `pip install -r requirements.txt`
+* Run `pip-sync` to ensure your installed packages exactly match those in `requirements.txt`
 * Commit both `requirements.in` and `requirements.txt` to your git repo
 
 To *upgrade* a specific package:
@@ -135,7 +132,8 @@ To upgrade everything:
 
     pip-compile --upgrade
 
-Don't forget to run `pip install -r requirements.txt` after running any upgrade command.
+Don't forget to run `pip-sync` after running
+any upgrade command.
 
 To execute these within your dockerised environment, start a new Bash
 console in Jupyter Lab (from the same menu you would create a new
