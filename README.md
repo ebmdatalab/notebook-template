@@ -58,9 +58,9 @@ packages are exactly the same as those available on other platforms.
 ### Installation
 
 Follow installation instructions
-[here](https://docs.docker.com/install/). If running on Windows, you
+[here](https://docs.docker.com/install/). Docker Desktop is generally preferred over Docker Toolbox,if possible. If running on Windows, you
 may find it useful first to refer to our own installation notes
-[here](https://github.com/ebmdatalab/custom-docker/issues/4).
+[here](https://github.com/ebmdatalab/custom-docker/issues/4) which cover Desktop/Toolbox and other installation questions.
 
 Windows users who log into an Active Directory domain (i.e. a network
 login) may find they lack permissions to start Docker correctly. If
