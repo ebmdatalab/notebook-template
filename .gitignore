@@ -108,5 +108,9 @@ venv.bak/
 .jupyter/
 .local/
 
+# sublime test/pycharm
+.idea/
+.DS_Store
+
 # Emacs
 *~
