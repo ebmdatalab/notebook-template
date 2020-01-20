@@ -71,7 +71,8 @@ Data, including raw and processed data, should be stored within the `data/` fold
 the `os` module. For more information, see [teaching resources](). 
 
 Tests live in `tests/` folder. Tests are run automatically with [pytest](https://docs.pytest.org/en/latest/). This library
-will find any python files called `test_*.py` and then find any functions called `test_*()`.   
+will find any python files called `test_*.py` and then find any functions called `test_*()`.  Tests also verify
+that notebooks are runnable with identical output.  
 
 `config/` contains the configuration required to run the Notebook; you
 shouldn't have to touch this.
@@ -209,7 +210,7 @@ set up with a `.gitattributes` file which means `ipynb` files are
 ignored in Github Pull Requests, making it easier to do code reviews
 against changes.
 
-### How to cite
+## How to invite people to cite
 
 Once a project is completed, please use the instructions [here](https://guides.github.com/activities/citable-code/) to deposit a copy of your code with Zenodo. You will need a Zenodo free account to do this. This creates a DOI. Once you have this please add this in the readme. 
 
