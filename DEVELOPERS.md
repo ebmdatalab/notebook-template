@@ -18,9 +18,11 @@ using this repo as a template, and clone it to your local machine.
 Your new repo's name should end with `-notebook`, to make it clear what it
 is.
 
-Then replace this front matter with information about your project. You should:
-   1.  keep the rest of the contents to help other users of this package
-   2.  keep the status badge at the top, changing
+Then replace the front matter in the [`README`](README.md) with
+information about your project. You should:
+
+   1. keep the rest of the contents to help other users of this package
+   2. keep the status badge at the top, changing
      `custom-docker` to the name of your repo
    3. edit the URL of the "quick start" button and the "nbviewer"
      link below to match the name of your new repo
