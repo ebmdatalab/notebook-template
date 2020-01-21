@@ -7,7 +7,7 @@ ENV MAIN_PATH=/home/app/notebook
 COPY requirements.txt /tmp/
 # Hack until this is fixed https://github.com/jazzband/pip-tools/issues/823
 USER root
-RUN chmod 755 /tmp/requirements.txt
+RUN chmod 644 /tmp/requirements.txt
 USER app
 RUN pip install --requirement /tmp/requirements.txt
 
