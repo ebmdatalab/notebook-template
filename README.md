@@ -130,6 +130,10 @@ Docker:
 
     pip install -r requirements.txt
 
+Activate our custom ipython kernel:
+
+    jupyter kernelspec install config/ --user --name="python3"
+
 Finally, run jupyter in the same way it's started in the Docker image:
 
     PYTHONPATH=$(pwd) jupyter notebook --config=config/jupyter_notebook_config.py
