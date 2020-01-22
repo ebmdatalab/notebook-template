@@ -44,7 +44,7 @@ you'll need to set up a local jupyter server and git repository.
 Each repo will have this basic folder structure. For more information, please see our [Open Analytics Manifesto](https://docs.google.com/document/d/1LD5hVjFOWx1AptbXkdTS135ureLkxd8kCumgl8mxzaA/)
 
 ```bash
-├── code
+├── lib
 │   └── custom_functions.py
 ├── config
 │   └── jupyter_notebook_config
