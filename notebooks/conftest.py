@@ -15,4 +15,4 @@ def pytest_collectstart(collector):
         # Skip plotly comparison, because something to do with
         # responsive plot sizing makes output different in test
         # environment
-        collector.skip_compare += ("application/vnd.plotly.v1+json",)
+        collector.skip_compare += ("application/vnd.plotly.v1+json", "stderr")
