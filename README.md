@@ -23,13 +23,8 @@ extension). You can most easily view them [on
 nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
 though looking at them in Github should also work.
 
-You can view *and interact* with any notebooks in the `notebooks/`
-folder by launching the notebook in the free online service,
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ebmdatalab/custom-docker/master).
-
-Any changes you make there won't be saved; to do development work,
-you'll need to set up a local jupyter server and git repository - see
-`DEVELOPERS.md` for more detail.
+To do development work, you'll need to set up a local jupyter server
+and git repository - see `DEVELOPERS.md` for more detail.
 
 ## How to cite
 
