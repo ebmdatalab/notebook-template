@@ -118,6 +118,8 @@ filesystem, and can be committed as usual.
 
 ### Running without Docker
 
+#### Linux / OSX
+
 If you want to execute notebooks without Docker, set up a [virtual
 environment](https://docs.python.org/3/tutorial/venv.html) for the
 Python version in question (you can infer this from the first line of
@@ -140,6 +142,24 @@ Finally, run jupyter in the same way it's started in the Docker image:
 
     PYTHONPATH=$(pwd) jupyter notebook --config=config/jupyter_notebook_config.py
 
+#### Windows
+
+The story with native Windows development is messy, because some
+packages are only available via `conda`, and others only via `pip`,
+and switching virtual environments is hard. However, if you *must* do
+it this way, the following instructions may help.
+
+Assuming you are using Anaconda - don't use the Jupyter Notebook
+shortcut to start your notebook; instead, ensure the required packages
+are installed and then start it from a prompt:
+
+* Open an anaconda prompt
+* type `cd <location_of_repo_checkout>` (e.g. `cd C:\Users\yourusername\Documents\Github\mynotebook`)
+* activate/create `conda environment` (you're on your own here)
+  * `conda install pip geopandas`
+  * `pip install -r requirements.txt`
+  * at a minimum you need to install jupytext, which you can do with `conda install pip geopandas` and then `pip install jupytext`
+* Type `jupyter notebook  --config=config\jupyter_notebook_config.py`
 
 ## Development best practices
 
