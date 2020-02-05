@@ -223,6 +223,39 @@ plugin, which we have set up as a Github Actions workflow (see the
 `.github/` folder). Any other pytest-style tests found are also run as
 part of this workflow.
 
+#### Gotchas
+
+* A common failure mode is where tests can't complete because they are
+  asking for input - typically a login token or password for an
+  external data source. The correct fix in these cases is to provide a
+  cached CSV of the same data, or a synthetic version if the source
+  data is confidential; bnotebooks should be runnable by anyone,
+  including people without access to the source data.
+
+* We consider stderr (this is debug output, coloured red when running
+  a notebook interactively) to be irrelevant for checking cell output,
+  and don't compare it
+
+* We also don't compare plotly outputs, because they appear to differ
+  in subtle ways between test and interactive environments (perhaps
+  related to responsive sizing)
+
+* `nbval` has a mechanism to ignore certain differences based on
+  regular expressions. Our default config, in
+  `config/nbval_sanitize_file.conf`, does this for UUIDs and python
+  memory references.
+
+* There are some subtle differences between how notebook cells are
+  executed interactively, and how they are executed by the test
+  framework. Specifically, you may find that commands that execute
+  subprocesses combine stderr and stdout to a single stream. In this
+  case, if it's not possible to suppress the output of the subprocess,
+  you may need to ask the test runner to skip comparing cell outputs
+  when executing that cell, which can do by adding a magic comment `#
+  NBVAL_IGNORE_OUTPUT`. The problem is discussed at more length
+  [here](https://github.com/ebmdatalab/custom-docker/issues/100)
+
+
 ### Jupytext and diffing
 
 The Jupyter Lab server is packaged with Jupytext, which automatically
