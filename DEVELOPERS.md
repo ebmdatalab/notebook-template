@@ -21,11 +21,12 @@ is.
 Then replace the front matter in the [`README`](README.md) with
 information about your project. You should:
 
-   1. keep the rest of the contents to help other users of this package
-   2. keep the status badge at the top, changing
+   1. Add general context: what is the purpose of the notebook? Who is it aimed at? What are the data sources?
+   2. Give specific signposts to things that might be harder to understand
+   2. Keep the rest of the contents to help other users of this package
+   3. Keep the status badge at the top, changing
      `custom-docker` to the name of your repo
-   3. edit the URL of the "quick start" button and the "nbviewer"
-     link below to match the name of your new repo
+   4. Edit the URL of the "quick start" button and the "nbviewer" link below to match the name of your new repo
 
 Notebooks live in the `notebooks/` folder (with an `ipynb`
 extension). You can most easily view them [on
