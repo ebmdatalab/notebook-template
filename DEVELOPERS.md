@@ -113,6 +113,12 @@ be able to access this in your web browser at http://localhost:8888/.
 Changes made in the Docker container will appear in your own
 filesystem, and can be committed as usual.
 
+#### Stop notebook
+
+- To close down the Docker container, press Ctrl-C in the Docker command window, then "y" within 5 seconds.
+- If a container is running in the background (e.g. you're trying to start a new one and get an error because the port is already taken), go to Powershell/command line and type `docker ps`.
+- Each will have a name consisting of two random words. To close one, type `docker stop [name]`
+
 ### Running without Docker
 
 #### Linux / OSX
