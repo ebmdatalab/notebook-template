@@ -207,12 +207,10 @@ To upgrade everything:
 Don't forget to run `pip-sync` after running
 any upgrade command.
 
-To execute these within your dockerised environment, start a new Bash
-console in Jupyter Lab (from the same menu you would create a new
-notebook).
+To execute these within your dockerised environment, you can either
 
-You can then run whatever shell commands you like, by typing them and
-hitting Shift + Enter to execute.
+* Prepend them with an exclamation mark in a notebook cell, e.g. `!pip-compile ../requirements.in && pip-sync ../requirements.txt`; or
+* start a new Bash console in Jupyter Lab (from the same menu you would create a new notebook).  You can then run whatever shell commands you like, by typing them and hitting Shift + Enter to execute.
 
 ### Testing
 
