@@ -1,6 +1,6 @@
 # EBM DataLab's skeleton notebook environment
 
-![status](https://github.com/ebmdatalab/custom-docker/workflows/Notebook%20checks/badge.svg)
+![status](https://github.com/ebmdatalab/<repo>/workflows/Notebook%20checks/badge.svg)
 
 ## Getting started with this skeleton project
 
@@ -20,7 +20,7 @@ your project.
 
 Notebooks live in the `notebooks/` folder (with an `ipynb`
 extension). You can most easily view them [on
-nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
+nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/<repo>/tree/master/notebooks/),
 though looking at them in Github should also work.
 
 To do development work, you'll need to set up a local jupyter server

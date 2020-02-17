@@ -1,6 +1,6 @@
 # EBM DataLab's default notebook environment
 
-![status](https://github.com/ebmdatalab/custom-docker/workflows/Notebook%20checks/badge.svg)
+![status](https://github.com/ebmdatalab/<repo>/workflows/Notebook%20checks/badge.svg)
 
 This is a skeleton project for creating a reproducible, cross-platform
 analysis notebook, using Docker.  It also includes:
@@ -24,13 +24,11 @@ information about your project. You should:
    1. Add general context: what is the purpose of the notebook? Who is it aimed at? What are the data sources?
    2. Give specific signposts to things that might be harder to understand
    2. Keep the rest of the contents to help other users of this package
-   3. Keep the status badge at the top, changing
-     `custom-docker` to the name of your repo
-   4. Edit the URL of the "quick start" button and the "nbviewer" link below to match the name of your new repo
+   3. Search-and-replace `<repo>` with your repo name; both in this doc, and the README.
 
 Notebooks live in the `notebooks/` folder (with an `ipynb`
 extension). You can most easily view them [on
-nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
+nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/<repo>/tree/master/notebooks/),
 though looking at them in Github should also work.
 
 To do development work, you'll need to set up a local jupyter server
