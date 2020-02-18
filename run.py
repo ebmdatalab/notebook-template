@@ -95,7 +95,9 @@ def main():
     print(
         "To stop this docker container, use Ctrl+ C, or the File -> Shut Down menu in Jupyter Lab"
     )
-    signal.pause()
+    while True:
+        # We can't use signal.sleep() in Windows
+        time.sleep(1)
 
 
 if __name__ == "__main__":
