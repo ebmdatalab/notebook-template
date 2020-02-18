@@ -36,6 +36,9 @@ def await_jupyter_http(port):
 def docker_build(tag):
     """Build container for Dockerfile in current directory
     """
+    print(
+        "Building docker image. This may take some time (particularly on the first run)..."
+    )
     buildcmd = ["docker", "build", "-t", tag, "-f", "Dockerfile", "."]
     subprocess.run(buildcmd, check=True)
 
@@ -45,6 +48,7 @@ def docker_run(tag):
     again
 
     """
+    print("Running docker...")
     runcmd = [
         "docker",
         "run",
@@ -86,7 +90,6 @@ def main():
     docker_build(tag)
     container_id = docker_run(tag)
     port = docker_port(container_id)
-    print("Waiting for Jupyter to be ready")
     await_jupyter_http(port)
     webbrowser.open(f"http://localhost:{port}", new=2)  # Open in a new tab
     print(
