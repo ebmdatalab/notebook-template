@@ -1,6 +1,7 @@
 import os
 import signal
 import subprocess
+import socket
 import sys
 import time
 import urllib.request
@@ -14,16 +15,21 @@ target_dir = "/home/app/notebook"
 def await_jupyter_http(port):
     """Wait up to 10 seconds for Jupyter to be available
     """
+    print(f"Waiting for Jupyter to be ready on port {port}")
+    timeout = 10
+    increment = 0.1
     counter = 0
     url = f"http://localhost:{port}"
-    while True and counter < 100:
+    while counter < (timeout / increment):
         try:
-            with urllib.request.urlopen(url):
+            with urllib.request.urlopen(url, timeout=timeout):
                 return
         except ConnectionResetError:
-            pass
-        counter += 1
-        time.sleep(0.1)
+            counter += 1
+            time.sleep(increment)
+        except socket.timeout:
+            break
+
     raise SystemError(f"Unable to reach Jupyter at {url}")
 
 
