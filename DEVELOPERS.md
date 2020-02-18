@@ -52,8 +52,8 @@ Each repo will have this basic folder structure. For more information, please se
 ├── README.md
 ├── requirements.in
 ├── requirements.txt
-├── run.bat
-├── run.sh
+├── run.exe
+├── run.py
 └── run_tests.sh
 
 ```
@@ -102,9 +102,9 @@ instructions](https://github.com/docker/for-win/issues/785#issuecomment-34480518
 The first time you do this, it may take some time, as the (large) base
 Docker image must be downloaded. On Linux or OS X:
 
-    ./run.sh
+    python run.py
 
-On Windows, double-click `run.bat`.
+On Windows, double-click `run.exe`.
 
 This will start a Jupyter Lab server in a Docker container. You will
 be able to access this in your web browser at http://localhost:8888/.
