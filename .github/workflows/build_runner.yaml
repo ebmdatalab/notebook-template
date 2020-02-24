@@ -1,6 +1,8 @@
 name: Build-runner
-
-on: [push]
+on:
+  push:
+    paths:
+    - "run.py"
 
 jobs:
   build:
@@ -31,3 +33,22 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
+  test_job:
+    # This is a copy of the yaml in `test_runner.yaml`, so that when
+    # there's a build, the tests are guaranteed to run *after* the
+    # build.  Otherwise the build status would potentially overwrite
+    # the test status, making red PRs no longer red.
+    #
+    # There is currently no `include`-like functionality in Github
+    # Actions, though this is apparently going to change:
+    # https://github.com/actions/starter-workflows/issues/245
+    runs-on: ubuntu-latest
+    name: Test notebooks are runnable and up-to-date
+    needs: build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Test
+      uses: ./.github/actions/build
+      with:
+        args: ./run_tests.sh

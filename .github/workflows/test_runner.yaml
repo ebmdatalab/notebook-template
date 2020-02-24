@@ -1,9 +1,14 @@
 name: Notebook checks
 
-on: [push]
+on:
+  push:
+    paths-ignore:
+    - "run.py"
 
 jobs:
   test_job:
+    # If you change this job, please also change it in
+    # build_runner.yaml (and see comments there for explanation)
     runs-on: ubuntu-latest
     name: Test notebooks are runnable and up-to-date
     steps:
@@ -12,6 +17,4 @@ jobs:
     - name: Test
       uses: ./.github/actions/build
       with:
-        # This awkward invocation is to get around the case where no
-        # tests are found, which has exit code of 5 in pytest
         args: ./run_tests.sh
