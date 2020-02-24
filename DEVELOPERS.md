@@ -197,10 +197,10 @@ individual packages in a sane way, we use
 
 The workflow is:
 
-* When you want to install a new package, add it to `requirements.in`
-* Run `pip-compile` to generate a `requirements.txt` based on that file
-* Run `pip-sync` to ensure your installed packages exactly match those in `requirements.txt`
-* Commit both `requirements.in` and `requirements.txt` to your git repo
+1. When you want to install a new package, add it to `requirements.in`
+2. Run `pip-compile` to generate a `requirements.txt` based on that file
+3. Run `pip-sync` to ensure your installed packages exactly match those in `requirements.txt`
+4. Commit both `requirements.in` and `requirements.txt` to your git repo
 
 To *upgrade* a specific package:
 
@@ -216,7 +216,17 @@ any upgrade command.
 To execute these within your dockerised environment, you can either
 
 * Prepend them with an exclamation mark in a notebook cell, e.g. `!pip-compile ../requirements.in && pip-sync ../requirements.txt`; or
-* start a new Bash console in Jupyter Lab (from the same menu you would create a new notebook).  You can then run whatever shell commands you like, by typing them and hitting Shift + Enter to execute.
+* start a new Bash console in Jupyter Lab (from the same menu you would create a new notebook).  You can then run whatever shell commands you like, by typing them and hitting Shift + Enter to execute:
+
+This is the Bash Console:
+![Alt Text](https://i.ibb.co/JsCYXsG/bash-console.png)
+
+It acts like the command line:
+![Alt Text](https://i.ibb.co/tPN9hfg/bash-command.png)
+
+As you can see now `requirements.txt` has been updated:
+![Alt Text](https://i.ibb.co/Qr4WNnG/bash-sync.png)
+
 
 ### Testing
 
