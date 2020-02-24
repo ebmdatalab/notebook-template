@@ -11,9 +11,9 @@ analysis notebook, using Docker.  It also includes:
 
 To get started, [create a new
 repository](https://github.com/organizations/ebmdatalab/repositories/new)
-using this repo as a template, and clone it to your local machine. You can do this by clicking 
+using this repo as a template, and clone it to your local machine. You can do this by clicking template in the drop down menu. 
 
-![alt text](https://raw.githubusercontent.com/ebmdatalab/teaching_resource/master/images/New-Repo.jpeg)
+![Alt Text](https://ibb.co/zR6czZY)
 
 Your new repo's name should end with `-notebook`, to make it clear what it
 is.
