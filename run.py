@@ -33,6 +33,23 @@ def await_jupyter_http(port):
     raise SystemError(f"Unable to reach Jupyter at {url}")
 
 
+def stream_subprocess_output(cmd):
+    """Stream stdout and stderr of `cmd` in a subprocess to stdout
+    """
+    with subprocess.Popen(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        bufsize=1,
+        universal_newlines=True,
+    ) as p:
+        for line in p.stdout:
+            print(line, end="")
+        p.wait()
+        if p.returncode > 0:
+            raise subprocess.CalledProcessError(cmd=cmd, returncode=p.returncode)
+
+
 def docker_build(tag):
     """Build container for Dockerfile in current directory
     """
@@ -40,7 +57,7 @@ def docker_build(tag):
         "Building docker image. This may take some time (particularly on the first run)..."
     )
     buildcmd = ["docker", "build", "-t", tag, "-f", "Dockerfile", "."]
-    subprocess.run(buildcmd, check=True)
+    stream_subprocess_output(buildcmd)
 
 
 def docker_run(tag):
@@ -63,9 +80,6 @@ def docker_run(tag):
     container_id = completed_process.stdout.decode("utf8").strip()
 
     def stop_handler(sig, frame):
-        print("Docker logs:")
-        subprocess.run(["docker", "logs", container_id])
-        print()
         print("Stopping docker...")
         subprocess.run(["docker", "kill", container_id], check=True)
         sys.exit(0)
@@ -95,9 +109,7 @@ def main():
     print(
         "To stop this docker container, use Ctrl+ C, or the File -> Shut Down menu in Jupyter Lab"
     )
-    while True:
-        # We can't use signal.sleep() in Windows
-        time.sleep(1)
+    stream_subprocess_output(["docker", "logs", "--follow", container_id])
 
 
 if __name__ == "__main__":
