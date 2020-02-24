@@ -1,7 +1,5 @@
 # EBM DataLab's default notebook environment
 
-![status](https://github.com/ebmdatalab/<repo>/workflows/Notebook%20checks/badge.svg)
-
 This is a skeleton project for creating a reproducible, cross-platform
 analysis notebook, using Docker.  It also includes:
 
@@ -13,7 +11,9 @@ analysis notebook, using Docker.  It also includes:
 
 To get started, [create a new
 repository](https://github.com/organizations/ebmdatalab/repositories/new)
-using this repo as a template, and clone it to your local machine.
+using this repo as a template, and clone it to your local machine. You can do this by clicking 
+
+![alt text](https://github.com/ebmdatalab/teaching_resource/blob/master/images/New-Repo.png)
 
 Your new repo's name should end with `-notebook`, to make it clear what it
 is.
@@ -109,11 +109,13 @@ On Windows, double-click `run.bat`.
 This will start a Jupyter Lab server in a Docker container. You will
 be able to access this in your web browser at http://localhost:8888/.
 Changes made in the Docker container will appear in your own
-filesystem, and can be committed as usual.
+filesystem, and can be committed as usual. If you would like to have two 
+or more Docker projects going on at the same time, please follow the instructions
+[here](https://github.com/ebmdatalab/custom-docker/issues/15).
 
 #### Stop notebook
 
-- To close down the Docker container, press Ctrl-C in the Docker command window, then "y" within 5 seconds.
+- To close down the Docker container, press Ctrl-C in the Docker command window, then "y".
 - If a container is running in the background (e.g. you're trying to start a new one and get an error because the port is already taken), go to Powershell/command line and type `docker ps`.
 - Each will have a name consisting of two random words. To close one, type `docker stop [name]`
 
