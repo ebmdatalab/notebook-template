@@ -100,11 +100,8 @@ instructions](https://github.com/docker/for-win/issues/785#issuecomment-34480518
 #### Start notebook
 
 The first time you do this, it may take some time, as the (large) base
-Docker image must be downloaded. On Linux or OS X:
-
-    python run.py
-
-On Windows, double-click `run.exe`.
+Docker image must be downloaded. On Linux or OS X, run `python3
+run.py`. On Windows, double-click `run.exe`.
 
 This will start a Jupyter Lab server in a Docker container. You will
 be able to access this in your web browser at http://localhost:8888/.
