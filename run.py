@@ -1,3 +1,7 @@
+"""A cross-platform script to build and start a notebook, open a web
+browser on the correct port, and handle shutdowns gracefully
+
+"""
 import os
 import signal
 import subprocess
