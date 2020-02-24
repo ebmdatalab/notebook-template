@@ -13,7 +13,7 @@ To get started, [create a new
 repository](https://github.com/organizations/ebmdatalab/repositories/new)
 using this repo as a template, and clone it to your local machine. You can do this by clicking 
 
-![alt text](https://raw.githubusercontent.com/ebmdatalab/teaching_resource/blob/master/images/New-Repo.jpeg)
+![alt text](https://raw.githubusercontent.com/ebmdatalab/teaching_resource/master/images/New-Repo.jpeg)
 
 Your new repo's name should end with `-notebook`, to make it clear what it
 is.
