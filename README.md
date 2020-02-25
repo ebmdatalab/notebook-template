@@ -1,7 +1,3 @@
-#Installation Guide
-
-
-
 ## Getting started with this skeleton project
 
 This is a skeleton project for creating a reproducible, cross-platform
