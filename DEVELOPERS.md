@@ -52,8 +52,8 @@ Each repo will have this basic folder structure. For more information, please se
 ├── README.md
 ├── requirements.in
 ├── requirements.txt
-├── run.bat
-├── run.sh
+├── run.exe
+├── run.py
 └── run_tests.sh
 
 ```
@@ -100,11 +100,8 @@ instructions](https://github.com/docker/for-win/issues/785#issuecomment-34480518
 #### Start notebook
 
 The first time you do this, it may take some time, as the (large) base
-Docker image must be downloaded. On Linux or OS X:
-
-    ./run.sh
-
-On Windows, double-click `run.bat`.
+Docker image must be downloaded. On Linux or OS X, run `python3
+run.py`. On Windows, double-click `run.exe`.
 
 This will start a Jupyter Lab server in a Docker container. You will
 be able to access this in your web browser at http://localhost:8888/.
@@ -115,9 +112,14 @@ or more Docker projects going on at the same time, please follow the instruction
 
 #### Stop notebook
 
+
 - To close down the Docker container, press Ctrl-C in the Docker command window, then "y".
 - If a container is running in the background (e.g. you're trying to start a new one and get an error because the port is already taken), go to Powershell/command line and type `docker ps`.
 - Each will have a name consisting of two random words. To close one, type `docker stop [name]`
+- To close down the Docker container, press Ctrl-C in the Docker command window. Normally, this is all you need to do. However, sometimes containers are not stopped correctly (for example if there is an error during startup). To check, and/or halt the container:
+    - Go to Powershell/command line and type `docker ps`. This will show all running docker containers, including "hidden" ones running in the background
+    - Each will have a name consisting of two random words. To close one, type `docker stop [name]`
+
 
 ### Running without Docker
 
