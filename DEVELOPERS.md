@@ -1,7 +1,5 @@
 # EBM DataLab's default notebook environment
 
-![status](https://github.com/ebmdatalab/<repo>/workflows/Notebook%20checks/badge.svg)
-
 This is a skeleton project for creating a reproducible, cross-platform
 analysis notebook, using Docker.  It also includes:
 
@@ -13,7 +11,9 @@ analysis notebook, using Docker.  It also includes:
 
 To get started, [create a new
 repository](https://github.com/organizations/ebmdatalab/repositories/new)
-using this repo as a template, and clone it to your local machine.
+using this repo as a template, and clone it to your local machine. You can do this by clicking template in the drop down menu. 
+
+![Alt Text](https://i.ibb.co/KqKZJWk/New-Repo.png)
 
 Your new repo's name should end with `-notebook`, to make it clear what it
 is.
@@ -106,13 +106,20 @@ run.py`. On Windows, double-click `run.exe`.
 This will start a Jupyter Lab server in a Docker container. You will
 be able to access this in your web browser at http://localhost:8888/.
 Changes made in the Docker container will appear in your own
-filesystem, and can be committed as usual.
+filesystem, and can be committed as usual. If you would like to have two 
+or more Docker projects going on at the same time, please follow the instructions
+[here](https://github.com/ebmdatalab/custom-docker/issues/15).
 
 #### Stop notebook
 
+
+- To close down the Docker container, press Ctrl-C in the Docker command window, then "y".
+- If a container is running in the background (e.g. you're trying to start a new one and get an error because the port is already taken), go to Powershell/command line and type `docker ps`.
+- Each will have a name consisting of two random words. To close one, type `docker stop [name]`
 - To close down the Docker container, press Ctrl-C in the Docker command window. Normally, this is all you need to do. However, sometimes containers are not stopped correctly (for example if there is an error during startup). To check, and/or halt the container:
     - Go to Powershell/command line and type `docker ps`. This will show all running docker containers, including "hidden" ones running in the background
     - Each will have a name consisting of two random words. To close one, type `docker stop [name]`
+
 
 ### Running without Docker
 
@@ -192,10 +199,10 @@ individual packages in a sane way, we use
 
 The workflow is:
 
-* When you want to install a new package, add it to `requirements.in`
-* Run `pip-compile` to generate a `requirements.txt` based on that file
-* Run `pip-sync` to ensure your installed packages exactly match those in `requirements.txt`
-* Commit both `requirements.in` and `requirements.txt` to your git repo
+1. When you want to install a new package, add it to `requirements.in`
+2. Run `pip-compile` to generate a `requirements.txt` based on that file
+3. Run `pip-sync` to ensure your installed packages exactly match those in `requirements.txt`
+4. Commit both `requirements.in` and `requirements.txt` to your git repo
 
 To *upgrade* a specific package:
 
@@ -211,7 +218,17 @@ any upgrade command.
 To execute these within your dockerised environment, you can either
 
 * Prepend them with an exclamation mark in a notebook cell, e.g. `!pip-compile ../requirements.in && pip-sync ../requirements.txt`; or
-* start a new Bash console in Jupyter Lab (from the same menu you would create a new notebook).  You can then run whatever shell commands you like, by typing them and hitting Shift + Enter to execute.
+* start a new Bash console in Jupyter Lab (from the same menu you would create a new notebook).  You can then run whatever shell commands you like, by typing them and hitting Shift + Enter to execute:
+
+This is the Bash Console:
+![Alt Text](https://i.ibb.co/JsCYXsG/bash-console.png)
+
+It acts like the command line:
+![Alt Text](https://i.ibb.co/tPN9hfg/bash-command.png)
+
+As you can see now `requirements.txt` has been updated:
+![Alt Text](https://i.ibb.co/Qr4WNnG/bash-sync.png)
+
 
 ### Testing
 

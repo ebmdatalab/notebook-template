@@ -28,4 +28,4 @@ and git repository - see `DEVELOPERS.md` for more detail.
 
 ## How to cite
 
-XXX
+XXX Please change to either a paper (if published) or the repo. You may find it helpful to use Zenodo DOI (see `DEVELOPERS.md` for further information)
