@@ -13,7 +13,7 @@ To get started, [create a new
 repository](https://github.com/organizations/ebmdatalab/repositories/new)
 using this repo as a template, and clone it to your local machine. You can do this by clicking template in the drop down menu. 
 
-![Alt Text](https://i.ibb.co/KqKZJWk/New-Repo.png)
+![Alt Text](https://user-images.githubusercontent.com/25401512/77587771-7a314380-6ee0-11ea-8dd6-27d8573f9e0d.png)
 
 Your new repo's name should end with `-notebook`, to make it clear what it
 is.
@@ -270,7 +270,7 @@ part of this workflow.
   you may need to ask the test runner to skip comparing cell outputs
   when executing that cell, which can do by adding a magic comment `#
   NBVAL_IGNORE_OUTPUT`. The problem is discussed at more length
-  [here](https://github.com/ebmdatalab/custom-docker/issues/100)
+  [here](https://github.com/ebmdatalab/datalab-notebook-template/issues/100)
 
 
 ### Jupytext and diffing
