@@ -1,6 +1,4 @@
-# EBM DataLab's skeleton notebook environment
-
-![status](https://github.com/ebmdatalab/<repo>/workflows/Notebook%20checks/badge.svg)
+#EBM DataLab's skeleton notebook environment
 
 ## Getting started with this skeleton project
 
@@ -16,6 +14,8 @@ refer to [`DEVELOPERS.md`](DEVELOPERS.md) for instructions on getting
 started.  Update this `README.md` so it is a suitable introduction to
 your project.
 
+If you have not yet installed Docker, please see the [`INSTALLATION_GUIDE.md`](INSTALLATION_GUIDE.md)
+
 ## How to view the notebooks
 
 Notebooks live in the `notebooks/` folder (with an `ipynb`
@@ -28,4 +28,4 @@ and git repository - see `DEVELOPERS.md` for more detail.
 
 ## How to cite
 
-XXX Please change to either a paper (if published) or the repo. You may find it helpful to use Zenodo DOI (see `DEVELOPERS.md` for further information)
+XXX Please change to either a paper (if published) or the repo. You may find it helpful to use Zenodo DOI (see [`DEVELOPERS.md`](DEVELOPERS.md#how-to-invite-people-to-cite) for further information)

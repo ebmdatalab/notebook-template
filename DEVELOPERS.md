@@ -7,6 +7,26 @@ analysis notebook, using Docker.  It also includes:
 * cross-platform startup scripts
 * best practice folder structure and documentation
 
+Please see the [`INSTALLATION GUIDE`](INSTALLATION_GUIDE.md) to learn how to install docker onto your machine.
+
+## Table of Contents
+
+- [Start and configure your new project](#start-and-configure-your-new-project)
+- [Structure of repo](#structure-of-repo)
+- [Developing notebooks](#developing-notebooks)
+  * [With Docker](#with-docker)
+    + [Start notebook](#start-notebook)
+    + [Stop notebook](#stop-notebook)
+  * [Running without Docker](#running-without-docker)
+    + [Linux / OSX](#linux---osx)
+    + [Windows](#windows)
+- [Development best practices](#development-best-practices)
+  * [Using a specific base image](#using-a-specific-base-image)
+  * [Installing new packages](#installing-new-packages)
+  * [Testing](#testing)
+    + [Gotchas](#gotchas)
+  * [Jupytext and diffing](#jupytext-and-diffing)
+- [How to invite people to cite](#how-to-invite-people-to-cite)
 ## Start and configure your new project
 
 To get started, [create a new
@@ -61,7 +81,7 @@ Each repo will have this basic folder structure. For more information, please se
 By convention, all Jupyter notebooks live in `notebooks/`.
 
 When notebooks look like they will contain more than a few lines of Python,
-the Python is separated into a separate module, in `code/`, and
+the Python is separated into a separate module, in `lib/`, and
 imported from the notebook.
 
 Data, including raw and processed data, should be stored within the `data/` folder. Paths can be created easily with
@@ -79,23 +99,11 @@ shouldn't have to touch this.
 There are two ways of getting started with a development environment:
 with Docker, or using Python virtual environments.
 
+### With Docker
+
 Docker allows you to run identical software on all platforms. In
 Windows, in particular, there are challenges ensuring all python
 packages are exactly the same as those available on other platforms.
-
-### Docker enviroment
-
-#### Installation
-
-Follow installation instructions
-[here](https://docs.docker.com/install/). Docker Desktop is generally preferred over Docker Toolbox. If running on Windows, you
-may find it useful first to refer to our own installation notes
-[here](https://github.com/ebmdatalab/custom-docker/issues/4) which cover Desktop/Toolbox and other installation questions.
-
-Windows users who log into an Active Directory domain (i.e. a network
-login) may find they lack permissions to start Docker correctly. If
-so, follow [these
-instructions](https://github.com/docker/for-win/issues/785#issuecomment-344805180).
 
 #### Start notebook
 
@@ -104,22 +112,20 @@ Docker image must be downloaded. On Linux or OS X, run `python3
 run.py`. On Windows, double-click `run.exe`.
 
 This will start a Jupyter Lab server in a Docker container. You will
-be able to access this in your web browser at http://localhost:8888/.
+be able to access this in your web browser. The address for you to access this will be 
+printed on your command line once Docker is up and running. It should look something like: 
+http://localhost:8888/.
+
 Changes made in the Docker container will appear in your own
-filesystem, and can be committed as usual. If you would like to have two 
-or more Docker projects going on at the same time, please follow the instructions
-[here](https://github.com/ebmdatalab/custom-docker/issues/15).
+filesystem, and can be committed as usual. If you 
 
 #### Stop notebook
 
-
-- To close down the Docker container, press Ctrl-C in the Docker command window, then "y".
-- If a container is running in the background (e.g. you're trying to start a new one and get an error because the port is already taken), go to Powershell/command line and type `docker ps`.
-- Each will have a name consisting of two random words. To close one, type `docker stop [name]`
-- To close down the Docker container, press Ctrl-C in the Docker command window. Normally, this is all you need to do. However, sometimes containers are not stopped correctly (for example if there is an error during startup). To check, and/or halt the container:
+- To close down the Docker container, press Ctrl-C in the Docker command window. 
+Normally, this is all you need to do. However, sometimes containers are not stopped correctly 
+(for example if there is an error during startup). To check, and/or halt the container:
     - Go to Powershell/command line and type `docker ps`. This will show all running docker containers, including "hidden" ones running in the background
     - Each will have a name consisting of two random words. To close one, type `docker stop [name]`
-
 
 ### Running without Docker
 
