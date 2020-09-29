@@ -25,7 +25,7 @@ Please follow installation instructions on the [Docker website](https://docs.doc
 Docker Desktop is preferred over Docker Toolbox. Docker Desktop offers native support via Hyper-V containers, and so is preferred, but requires 
 Windows 10 64-bit Pro, Enterprise, or Education (Build 15063 or later), and Hyper-V and Containers 
 Windows features must be enabled (all of which are the case on our standard university laptop 
-installs).
+installs; if Hyper-V has not been enabled, [follow the instructions here[(https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)).
 
 Docker Toolbox runs docker within a Linux virtualbox via Docker Machine, and therefore offers a functional but sub-optimal experience.
 
