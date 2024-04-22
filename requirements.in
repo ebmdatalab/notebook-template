@@ -5,7 +5,6 @@ jupyter
 jupyterlab
 jupytext
 bash_kernel
-nbval
 
 # Commonly-used packages provided in base docker image
 pandas-gbq
