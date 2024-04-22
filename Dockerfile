@@ -21,6 +21,8 @@ ENV SHELL=/bin/bash
 # Jupyter writes various runtime files to $HOME so we need that to be writable
 # regardless of which user we run as
 ENV HOME=/tmp
+# Allow Jupyter to be configured from within the workspace
+ENV JUPYTER_CONFIG_DIR=/workspace/jupyter-config
 # This variable is only needed for the `ebmdatalab` package:
 # https://pypi.org/project/ebmdatalab/
 ENV EBMDATALAB_BQ_CREDENTIALS_PATH=/workspace/bq-service-account.json
