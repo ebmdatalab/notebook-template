@@ -1,13 +1,11 @@
-# Basic requirements for notebook infrastructure provided in base
-# docker image
+# Basic requirements for notebook infrastructure
 pip-tools
 jupyter
 jupyterlab
 jupytext
 bash_kernel
-nbval
 
-# Commonly-used packages provided in base docker image
+# Commonly-used packages within the Bennett Institute
 pandas-gbq
 pandas
 numpy
@@ -16,7 +14,7 @@ matplotlib
 tqdm
 
 # Both these required for plotly+notebooks
-plotly
 ipywidgets
+dash
 
 # Add extra per-notebook packages here

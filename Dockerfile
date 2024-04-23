@@ -1,27 +1,35 @@
-FROM ebmdatalab/datalab-jupyter:python3.8.1-2328e31e7391a127fe7184dcce38d581a17b1fa5
+# syntax=docker/dockerfile:1.2
+FROM python:3.12-bookworm
 
-# Set up jupyter environment
-ENV MAIN_PATH=/home/app/notebook
+# Install apt packages, using the host cache
+COPY packages.txt /tmp/packages.txt
+RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \
+    --mount=target=/var/cache/apt,type=cache,sharing=locked \
+    rm -f /etc/apt/apt.conf.d/docker-clean \
+    && apt-get update \
+    && sed 's/#.*//' /tmp/packages.txt \
+        | xargs apt-get -y --no-install-recommends install
 
-# Set path to BQ service account credentials
-ENV EBMDATALAB_BQ_CREDENTIALS_PATH=/tmp/bq-service-account.json
+# Install Python packages, using the host cache
+COPY requirements.txt /tmp/requirements.txt
+RUN --mount=type=cache,target=/root/.cache \
+    python -m pip install --no-deps --requirement /tmp/requirements.txt
 
-# Install pip requirements
-COPY requirements.txt /tmp/
-# Hack until this is fixed https://github.com/jazzband/pip-tools/issues/823
-RUN chmod 644 /tmp/requirements.txt
-RUN pip install --requirement /tmp/requirements.txt
+# Without this, the Jupyter terminal defaults to /bin/sh which is much less
+# usable
+ENV SHELL=/bin/bash
+# Jupyter writes various runtime files to $HOME so we need that to be writable
+# regardless of which user we run as
+ENV HOME=/tmp
+# Allow Jupyter to be configured from within the workspace
+ENV JUPYTER_CONFIG_DIR=/workspace/jupyter-config
+# This variable is only needed for the `ebmdatalab` package:
+# https://pypi.org/project/ebmdatalab/
+ENV EBMDATALAB_BQ_CREDENTIALS_PATH=/workspace/bq-service-account.json
 
-EXPOSE 8888
+# Run any necessary post-installation tasks
+COPY postinstall.sh /tmp/postinstall.sh
+RUN /tmp/postinstall.sh
 
-# This is a custom ipython kernel that allows us to manipulate
-# `sys.path` in a consistent way between normal and pytest-with-nbval
-# invocations
-COPY config/kernel.json /tmp/kernel_with_custom_path/kernel.json
-RUN jupyter kernelspec install /tmp/kernel_with_custom_path/ --user --name="python3"
-
-CMD cd ${MAIN_PATH} && PYTHONPATH=${MAIN_PATH} jupyter lab --config=config/jupyter_notebook_config.py
-
-# Copy BQ service account credentials into container
-# We work around the credentials not existing in CI with the glob
-COPY bq-service-account.jso[n] /tmp/
+RUN mkdir /workspace
+WORKDIR /workspace
