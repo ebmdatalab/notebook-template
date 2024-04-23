@@ -51,6 +51,11 @@ dirname="$(basename "$PWD")"
 path_hash=$(echo "$PWD" | shasum | head -c 8)
 image_name="jupyter-$dirname-$path_hash"
 
+# Generate a short random suffix so that we can set a meaningful name for the
+# container but still ensure uniqueness (with sufficiently high probability)
+container_suffix=$(head -c 6 /dev/urandom | base64 | tr '+/' '01')
+container_name="$image_name-$container_suffix"
+
 
 # BUILD IMAGE
 #
@@ -133,7 +138,7 @@ docker_args=(
   --rm
   --interactive
   --tty
-  --name "$image_name-runner"
+  --name "$container_name"
   --user "$docker_user"
 
   # The leading slash before PWD here is needed when running on Windows to stop
