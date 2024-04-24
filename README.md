@@ -1,4 +1,4 @@
-# EBM DataLab's skeleton notebook environment
+# The Bennett Institute's skeleton notebook environment
 
 
 ## Getting started with this skeleton project
