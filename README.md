@@ -40,6 +40,26 @@ docker: Error response from daemon: user declined directory sharing C:\path\to\d
 you should open the Docker dashboard, and then under Settings -> Resources ->
 FileSharing, add the appropriate path.
 
+Once the server starts you should see the URL needed to access it,
+followed by some lines of Jupyter log output, for example:
+<pre>
+ -> Connect to notebook with URL:
+
+        <strong>http://localhost:59169/?token=C1atgmXc9IJGXCZy</strong>
+
+    Tip: to open in browser, triple-click the URL, right-click, choose "Open"
+
+[I 2024-08-08 13:13:18.953 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2024-08-08 13:13:18.959 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2024-08-08 13:13:18.969 ServerApp] jupyterlab | extension was successfully linked.
+...
+[I 2024-08-08 13:13:19.471 ServerApp] Serving notebooks from local directory: /workspace
+[I 2024-08-08 13:13:19.472 ServerApp] Jupyter Server 2.14.0 is running at:
+[I 2024-08-08 13:13:19.472 ServerApp] http://localhost:59169/?token=C1atgmXc9IJGXCZy
+[I 2024-08-08 13:13:19.472 ServerApp]     http://127.0.0.1:59169/lab?token=...
+[I 2024-08-08 13:13:19.472 ServerApp] Use Control-C to stop this server and shut down all kernels.
+</pre>
+
 
 ## How to cite
 
